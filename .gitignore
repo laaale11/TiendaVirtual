@@ -1,0 +1,12 @@
+# Entorno virtual
+env/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Datos sensibles
+data/*.db
+data/*.json
