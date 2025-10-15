@@ -1,5 +1,5 @@
 class Cliente:
-    def __init__(self, id_cliente, nombre, celular, direccion, ciudad, email, tipo_cliente="Minorista"):
+    def __init__(self, id_cliente, nombre, celular, direccion, ciudad, email, tipo_cliente="Minorista", activo=True):
         self.id_cliente = id_cliente
         self.nombre = nombre
         self.celular = celular
@@ -7,6 +7,7 @@ class Cliente:
         self.ciudad = ciudad
         self.email = email
         self.tipo_cliente = tipo_cliente
+        self.activo = activo  # Nuevo: estado activo/inactivo
     
     def to_dict(self):
         return {
@@ -16,7 +17,8 @@ class Cliente:
             'direccion': self.direccion,
             'ciudad': self.ciudad,
             'email': self.email,
-            'tipo_cliente': self.tipo_cliente
+            'tipo_cliente': self.tipo_cliente,
+            'activo': self.activo  # Nuevo campo
         }
     
     @classmethod
@@ -28,8 +30,11 @@ class Cliente:
             data['direccion'],
             data['ciudad'],
             data['email'],
-            data.get('tipo_cliente', 'Minorista')
+            data.get('tipo_cliente', 'Minorista'),
+            data.get('activo', True)  # Nuevo campo
         )
     
     def __str__(self):
-        return f"{self.id_cliente}: {self.nombre} ({self.tipo_cliente}) - {self.ciudad}"
+        estado = "✅" if self.activo else "❌"
+        tipo_icon = "🏢" if self.tipo_cliente == "Mayorista" else "👤"
+        return f"{estado} {tipo_icon} {self.id_cliente}: {self.nombre} ({self.tipo_cliente})"

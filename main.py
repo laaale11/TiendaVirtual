@@ -13,14 +13,14 @@ class TiendaVirtual:
     def mostrar_menu_principal(self):
         while True:
             self._limpiar_pantalla()
-            self._mostrar_titulo_bonito("🛍️ TIENDA VIRTUAL 🛍️")
-            print(" ───────────────────────────────────────────────── ")
-            print("│    1. 📦 Gestión de Productos                   │")
-            print("│    2. 👥 Gestión de Clientes                    │")
-            print("│    3. 📋 Gestión de Pedidos                     │")
-            print("│    4. 📞 Comunicación con Clientes              │")
-            print("│    5. 🚪 Salir                                  │")
-            print(" ─────────────────────────────────────────────────")
+            self._mostrar_titulo_bonito("🛍️  TIENDA VIRTUAL")
+            print(" ──────────────────────────────────────────── ")
+            print("│  1. 📦 Gestión de Productos                │")
+            print("│  2. 👥 Gestión de Clientes                 │")
+            print("│  3. 📋 Gestión de Pedidos                  │")
+            print("│  4. 📞 Comunicación con Clientes           │")
+            print("│  5. 🚪 Salir                               │")
+            print(" ──────────────────────────────────────────── ")
             
             opcion = input("\n👉 Selecciona una opción (1-5): ")
             
@@ -33,25 +33,28 @@ class TiendaVirtual:
             elif opcion == "4":
                 self.menu_comunicacion()
             elif opcion == "5":
-                print("   ¡Gracias por usar la Tienda Virtual! 👋")
+                print("\n ¡Gracias por usar la Tienda Virtual! ")
+               
                 break
             else:
-                print("\n❌ Opción inválida. Intenta nuevamente.")
+                print("\n❌ Opción inválida. Por favor selecciona 1-5.")
                 self._pausar()
     
     def menu_gestion_productos(self):
         while True:
             self._limpiar_pantalla()
             self._mostrar_titulo_bonito("📦 GESTIÓN DE PRODUCTOS")
-            print(" ────────────────────────────────────────────")
+            print("┌─────────────────────────────────────────────")
+            print("                 📦 OPCIONES                 │ ")
+            print(" ─────────────────────────────────────────────  ")
             print("│  1. 🆕 Registrar nuevo producto            │")
             print("│  2. 👀 Ver catálogo de productos           │")
-            print("│  3. 🔍 Buscar producto por ID / nombre     │")
-            print("│  4. ✏️ Actualizar información de producto  │")
-            print("│  5. 🗑️ Eliminar producto                   │")
-            print("│  6. ⚠️ Ver productos con stock bajo        │")
-            print("│  7. ↩️ Volver al menú principal            │ ")
-            print(" ──────────────────────────────────────────── ")
+            print("│  3. 🔍 Buscar producto                     │")
+            print("│  4. ✏️  Actualizar producto                │")
+            print("│  5. 🔄 Activar/Desactivar producto         │")
+            print("│  6. ⚠️  Ver productos con stock bajo       │")
+            print("│  7. ↩️  Volver al menú principal           │")
+            print(" ────────────────────────────────────────────  ")
             
             opcion = input("\n👉 Selecciona una opción (1-7): ")
             
@@ -64,13 +67,13 @@ class TiendaVirtual:
             elif opcion == "4":
                 self.producto_manager.actualizar_producto()
             elif opcion == "5":
-                self.producto_manager.eliminar_producto()
+                self.producto_manager.cambiar_estado_producto()
             elif opcion == "6":
                 self.producto_manager.ver_stock_bajo()
             elif opcion == "7":
                 break
             else:
-                print("\n❌ Opción inválida.")
+                print("\n❌ Opción inválida. Por favor selecciona 1-7.")
             
             self._pausar()
     
@@ -78,16 +81,17 @@ class TiendaVirtual:
         while True:
             self._limpiar_pantalla()
             self._mostrar_titulo_bonito("👥 GESTIÓN DE CLIENTES")
-            
-            print(" ────────────────────────────────────────────")
+            print("┌─────────────────────────────────────────────")
+            print("│                👥 OPCIONES                 │")
+            print("├─────────────────────────────────────────────")
             print("│  1. 🆕 Registrar nuevo cliente             │")
             print("│  2. 👀 Ver lista de clientes               │")
-            print("│  3. 🔍 Buscar cliente por ID / nombre      │")
-            print("│  4. ✏️ Actualizar datos del cliente        │")
-            print("│  5. 🗑️ Eliminar cliente                    │")
+            print("│  3. 🔍 Buscar cliente                      │")
+            print("│  4. ✏️  Actualizar datos del cliente       │")
+            print("│  5. 🔄 Activar/Desactivar cliente          │")
             print("│  6. 🏢 Filtrar clientes por tipo           │")
-            print("│  7. ↩️ Volver al menú principal            │")
-            print(" ──────────────────────────────────────────── ")
+            print("│  7. ↩️  Volver al menú principal           │")
+            print(" ────────────────────────────────────────────  ")
             
             opcion = input("\n👉 Selecciona una opción (1-7): ")
             
@@ -100,13 +104,13 @@ class TiendaVirtual:
             elif opcion == "4":
                 self.cliente_manager.actualizar_cliente()
             elif opcion == "5":
-                self.cliente_manager.eliminar_cliente()
+                self.cliente_manager.cambiar_estado_cliente()
             elif opcion == "6":
                 self.cliente_manager.filtrar_por_tipo()
             elif opcion == "7":
                 break
             else:
-                print("\n❌ Opción inválida.")
+                print("\n❌ Opción inválida. Por favor selecciona 1-7.")
             
             self._pausar()
     
@@ -114,15 +118,17 @@ class TiendaVirtual:
         while True:
             self._limpiar_pantalla()
             self._mostrar_titulo_bonito("📋 GESTIÓN DE PEDIDOS")
-            print(" ────────────────────────────────────────────")
+            print("┌─────────────────────────────────────────────")
+            print("│                📋 OPCIONES                 │")
+            print("├─────────────────────────────────────────────")
             print("│  1. 🆕 Registrar nuevo pedido              │")
             print("│  2. 👀 Ver pedidos registrados             │")
-            print("│  3. 🔍 Buscar pedido por ID                │")
+            print("│  3. 🔍 Buscar pedido                       │")
             print("│  4. 📊 Actualizar estado del pedido        │")
             print("│  5. ❌ Cancelar pedido                     │")
             print("│  6. 👤 Ver pedidos por cliente             │")
             print("│  7. 📅 Ver pedidos por fecha               │")
-            print("│  8. ↩️ Volver al menú principal            │")
+            print("│  8. ↩️  Volver al menú principal           │")
             print(" ────────────────────────────────────────────")
             
             opcion = input("\n👉 Selecciona una opción (1-8): ")
@@ -144,7 +150,7 @@ class TiendaVirtual:
             elif opcion == "8":
                 break
             else:
-                print("\n❌ Opción inválida.")
+                print("\n❌ Opción inválida. Por favor selecciona 1-8.")
             
             self._pausar()
     
@@ -152,12 +158,13 @@ class TiendaVirtual:
         while True:
             self._limpiar_pantalla()
             self._mostrar_titulo_bonito("📞 COMUNICACIÓN CON CLIENTES")
-            
-            print(" ────────────────────────────────────────────")
+            print("┌─────────────────────────────────────────────")
+            print("│                📞 OPCIONES                 │")
+            print("├─────────────────────────────────────────────")
             print("│  1. 📱 Enviar mensaje por WhatsApp         │")
             print("│  2. 📧 Enviar correo electrónico           │")
             print("│  3. 📜 Ver historial de comunicaciones     │")
-            print("│  4. ↩️ Volver al menú principal            │")
+            print("│  4. ↩️  Volver al menú principal           │")
             print(" ────────────────────────────────────────────")
             
             opcion = input("\n👉 Selecciona una opción (1-4): ")
@@ -171,21 +178,18 @@ class TiendaVirtual:
             elif opcion == "4":
                 break
             else:
-                print("\n❌ Opción inválida.")
+                print("\n❌ Opción inválida. Por favor selecciona 1-4.")
             
             self._pausar()
     
     def _limpiar_pantalla(self):
-        """Limpia la pantalla de la consola"""
         import os
         os.system('cls' if os.name == 'nt' else 'clear')
     
     def _pausar(self):
-        """Pausa la ejecución hasta que el usuario presione Enter"""
         input("\n↵ Presiona Enter para continuar...")
     
     def _mostrar_titulo_bonito(self, titulo):
-        """Muestra un título formateado con bordes"""
         ancho = 50
         print("\n" + "╔" + "═" * (ancho - 2) + "╗")
         print("║" + titulo.center(ancho - 2) + "")
